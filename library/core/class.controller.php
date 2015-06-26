@@ -631,10 +631,10 @@ class Gdn_Controller extends Gdn_Pluggable {
          $this->_Definitions['TransientKey'] = $Session->TransientKey();
 
       if (!array_key_exists('WebRoot', $this->_Definitions))
-         $this->_Definitions['WebRoot'] = \URL::to('/');
+         $this->_Definitions['WebRoot'] = CombinePaths(array(Gdn::Request()->Domain(), Gdn::Request()->WebRoot()), '/');
 
       if (!array_key_exists('UrlFormat', $this->_Definitions))
-         $this->_Definitions['UrlFormat'] = \URL::to('/').'/'.'{Path}';
+         $this->_Definitions['UrlFormat'] = CombinePaths(array(Gdn::Request()->Domain(), Gdn::Request()->WebRoot(),'{Path}'), '/');
 
       if (!array_key_exists('Path', $this->_Definitions))
          $this->_Definitions['Path'] = Gdn::Request()->Path();
